@@ -1,0 +1,16 @@
+const getCallerIdNameError = (value: string) =>  
+  NAME_REGEX.test(value)  
+    ? ''  
+    : 'Caller ID Name must be 1-10 letters or numbers only.';  
+  
+const getSpoofedFromError = (value: string) =>  
+  CALLER_ID_NUMBER_REGEX.test(value)  
+    ? ''  
+    : 'Caller ID Number must be 1-10 digits only.';  
+  
+const getRecipientError = (value: string) => {  
+  const normalized = normalizeRecipientToE164(value);  
+  return RECIPIENT_REGEX.test(normalized)  
+    ? ''  
+    : 'Recipient Number must be a valid phone number in E.164 format.';  
+};  
